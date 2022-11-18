@@ -16,5 +16,5 @@ window.onload = function(){
 }
 
 function getProductByID(id){
-    window.location = "product/"+id;
+    window.location = "/product/"+id;
 }
