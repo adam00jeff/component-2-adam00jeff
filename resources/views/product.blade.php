@@ -1,15 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2>Product</h2>
+    <h2>Product {{$product['id']}}</h2>
     <table>
         <tr>
-            <th>Name</th>
+            <th>Artist</th>
+            <th>Title</th>
             <th>Price</th>
         </tr>
             <tr>
-                <td>{{$product['name']}}</td>
-                <td>{{$product['price']}}</td>
+                <td>{{$product['artist']}}</td>
+                <td>{{$product['title']}}</td>
+                <td>{{$product['price']/100}}</td>
+
 
             </tr>
     </table>
