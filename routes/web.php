@@ -22,23 +22,20 @@ Route::get('product/{id}', function ($id) {
     return view('product', ['product'=>$product]);
 });
 
-Route::get('product/', function () {
-    $products = getProducts();
-    return view('products', ['products'=>$products]);
-});
+Route::get('/products', [\App\Http\Controllers\ProductController::class,'index']);
 
-function getProducts() {
-    $products = [];
-    $products[] = array("id"=>1,"name"=>"The Jam","price"=>5.99);
-    $products[] = array("id"=>2,"name"=>"Amy Winehouse","price"=>0.99);
-    return $products;
-}
 
 function getProduct($id){
     if($id==1) return array("id"=>1,"name"=>"The Jam","price"=>5.99);
     if($id==2) return array("id"=>2,"name"=>"Amy Winehouse","price"=>0.99);
 }
 
+//function getProducts() {
+//    $products = [];
+//    $products[] = array("id"=>1,"name"=>"The Jam","price"=>5.99);
+//    $products[] = array("id"=>2,"name"=>"Amy Winehouse","price"=>0.99);
+//    return $products;
+//}
 /*
 Route::get('/dashboard', function () {
     return view('dashboard');
