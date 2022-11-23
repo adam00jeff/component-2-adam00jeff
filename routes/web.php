@@ -17,8 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('products/create', [\App\Http\Controllers\ProductController::class,'create']);
-Route::get('/products', [\App\Http\Controllers\ProductController::class,'index']);
-Route::get('/products/{product}',[\App\Http\Controllers\ProductController::class,'show']);
+Route::get('/products', [\App\Http\Controllers\ProductController::class,'index'])->name('index');
+Route::get('/products/{product}',[\App\Http\Controllers\ProductController::class,'show'])->name('show');
 Route::post('/products',[\App\Http\Controllers\ProductController::class,'store']);
 Route::get('/dashboard', function () {
     return view('dashboard');
