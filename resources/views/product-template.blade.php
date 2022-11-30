@@ -11,6 +11,6 @@
             @if(Route::currentRouteName()=='index')
                 <button value="{{$product['id']}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full select-product">Select</button>
             @endif
-                </div>
+        </div>
     </div>
 </div>
