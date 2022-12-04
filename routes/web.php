@@ -12,10 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
-});
+});*/
+Route::get('/', [\App\Http\Controllers\ProductController::class, 'index'])->name('index');
+
 Route::get('products/create', [\App\Http\Controllers\ProductController::class,'create']);
 
 Route::get('/products', [\App\Http\Controllers\ProductController::class,'index'])->name('index');

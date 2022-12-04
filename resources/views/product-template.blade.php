@@ -15,9 +15,8 @@
             @endif
         </div>
     </div>
-        @if(Route::currentRouteName()=='index')
+@if(Route::currentRouteName()=='index')
     </div>
-                @else
+@else
     </div>
 @endif
-

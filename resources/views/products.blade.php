@@ -1,4 +1,4 @@
-@extends('layouts.app')
+<x-app-layout>
 
 @section('content')
     <h2>Full list of products</h2>
@@ -13,8 +13,7 @@
     @endforeach
 
 @endsection
-
-
+</x-app-layout>
 
 {{--    <table>--}}
 {{--        <tr>--}}
