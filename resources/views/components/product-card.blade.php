@@ -1,4 +1,4 @@
-<div class ="bg-white p-1 rounded-lg shadow-lg">
+<div class ="bg-blue p-2 rounded-lg shadow-lg">
         <h3 class = "text-blue-700 mb-4 text-lg font-bold">{{$product['artist']}}</h3>
         <h3 class = "font-bold mb-2 text-gray-800">{{ $product['title'] }}</h3>
         <div class = "flex justify-between">
@@ -10,3 +10,5 @@
             @endif
         </div>
     </div>
+
+   
