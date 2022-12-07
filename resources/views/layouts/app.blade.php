@@ -16,23 +16,29 @@
         <!-- Scripts -->
         <script src="{{ asset('js/my.js') }}"></script>
     </head>
-    <body class="font-sans antialiased">
+    <body>
        <div class="min-h-screen bg-gray-100">
 
-
             <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          {{$header}}
-                </div>
-            </header>
+            <header class="flex justify-between border-bottom-double border-8 bg-white shadow">
+                <div class="flex flex-col items-start border-2 rounded-lg m-5">
+                    <img src="{{asset('images/om.jpg')}}" alt="logo" class="m-5">
+                    <h2 class = "font-bold text-lg self-center"> Component 2</h2>
 
+                </div>  <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    {{ __('Dashboard') }}
+                </x-responsive-nav-link>
+                <div>login/ account</div>
+
+            </header>
+           @include('layouts.menu')
+           {{$header ?? ''}}
             <!-- Page Content -->
             <main class="border-bottom-double border-2">
             {{$slot ?? ''}}
-              
-               
-              
+
+
+
             </main>
         </div>
 

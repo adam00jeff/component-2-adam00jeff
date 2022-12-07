@@ -19,7 +19,7 @@
                                         this.closest('form').submit();">
                             {{ __('Log Out') }}
                         </x-responsive-nav-link>
-                        <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        <x-responsive-nav-link :href="route('index')" :active="request()->routeIs('index')">
                             {{ __('Products') }}
                         </x-responsive-nav-link>
                         You're logged in!
