@@ -32,7 +32,9 @@
 
             </header>
            @include('layouts.menu')
+           <div class="flex justify-center font-bold text-lg self-center"
            {{$header ?? ''}}
+       </div>
             <!-- Page Content -->
             <main class="border-bottom-double border-2">
             {{$slot ?? ''}}
