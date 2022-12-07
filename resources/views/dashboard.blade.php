@@ -1,7 +1,7 @@
-<x-app-layout>
+@extends('layouts.app')
 
 <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semi-bold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
@@ -28,4 +28,3 @@
         </div>
     </div>
 
-    </x-app-layout>
