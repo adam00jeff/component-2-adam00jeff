@@ -9,7 +9,7 @@
 
         <div class="productlist p-2">
     @foreach($products as $product)
-            <x-product-card :product=$product />
+            <x-product-card :product="$product" />
     @endforeach
         </div>
 
