@@ -23,16 +23,16 @@
             <!-- Page Heading -->
             <header class="bg-white shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    @include('layouts.navigation')
+          
                 </div>
             </header>
 
             <!-- Page Content -->
             <main class="border-bottom-double border-2">
             {{$slot ?? ''}}
-               {{-- <div class="product-list">
-                    @yield('content')--}}
-                </div>
+              
+               
+              
             </main>
         </div>
 
