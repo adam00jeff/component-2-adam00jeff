@@ -3,17 +3,19 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use App\Models\Product;
 
 class ProductCard extends Component
 {
+    public $product;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($product)
     {
-        //
+        $this->product = $product;
     }
 
     /**

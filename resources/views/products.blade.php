@@ -1,18 +1,18 @@
 <x-app-layout>
+{{--
 
-@section('content')
-    <h2>Full list of products</h2>
+    <x-slot name="header">
+        <h2 class ="font-semibold text-xl text-gray-800 leading-tight">
+            Full list of products</h2>
+    </x-slot>
+--}}
 
-    @foreach ($products->chunk(4) as $chunk)
-        <div class="grid grid-cols-4">
-            @foreach($chunk as $product)
-                @include('product-template', ['product'=>$product])
-
-            @endforeach
-        </div>
+        <div class="productlist p-2">
+    @foreach($products as $product)
+            <x-product-card :product=$product" />
     @endforeach
+        </div>
 
-@endsection
 </x-app-layout>
 
 {{--    <table>--}}

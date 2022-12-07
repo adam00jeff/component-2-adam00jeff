@@ -1,6 +1,6 @@
-@extends('layouts.app')
+<x-app-layout>
 
-@section('content')
+<x-slot>
 {{--    <h2>Product {{$product['id']}}</h2>--}}
 {{--    <table>--}}
 {{--        <tr>--}}
@@ -12,10 +12,10 @@
 {{--                <td>{{$product['artist']}}</td>--}}
 {{--                <td>{{$product['title']}}</td>--}}
 {{--                <td>{{$product['price']/100}}</td>--}}
-
-
+@include('product-template',['product'=>$product])
+</x-slot>
 {{--            </tr>--}}
 {{--    </table>--}}
-@include('product-template',['product'=>$product])
 
-@endsection
+
+</x-app-layout>

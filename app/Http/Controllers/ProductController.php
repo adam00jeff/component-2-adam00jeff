@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
+/*use Illuminate\Routing\Route;*/
+use Illuminate\Support\Facades\Route;
 
 class ProductController extends Controller
 {
@@ -15,8 +16,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-   /*     if(Route::currentRouteName()=="home") $products=Product::limit(5)->get();
-        else */$products = Product::all()->sortBy('artist');
+        if(Route::currentRouteName()=="home") $products=Product::limit(5)->get();
+        else $products = Product::all()->sortBy('artist');
         return view('products', ['products'=>$products]);
     }
 

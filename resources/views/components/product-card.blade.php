@@ -1,3 +1,6 @@
 <div>
-    <!-- Life is available only in the present moment. - Thich Nhat Hanh -->
+    <p>{{$product['artist']}}</p>
+    <p>{{$product['title']}}</p>
+    <p>{{$product['price']}}</p>
+    <p>{{$product->productType['type']}}</p>
 </div>
