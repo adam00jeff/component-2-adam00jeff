@@ -7,7 +7,7 @@
     </x-slot>
 
 
-        <div class="productlist p-2">
+        <div class="productlist p-2 grid grid-cols-4">
     @foreach($products as $product)
             <x-product-card :product="$product" />
     @endforeach
