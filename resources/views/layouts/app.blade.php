@@ -25,16 +25,16 @@
                     <img src="{{asset('images/om.jpg')}}" alt="logo" class="m-5">
                     <h2 class = "font-bold text-lg self-center"> Component 2</h2>
 
-                </div>  <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    {{ __('Dashboard') }}
-                </x-responsive-nav-link>
-                <div>login/ account</div>
+                </div>
+                <div class="border-1 m-2">
+                    login/ account
+                </div>
 
             </header>
            @include('layouts.menu')
            <div class="flex justify-center font-bold text-lg self-center"
            {{$header ?? ''}}
-       </div>
+            </div>
             <!-- Page Content -->
             <main class="border-bottom-double border-2">
             {{$slot ?? ''}}
@@ -42,7 +42,7 @@
 
 
             </main>
-        </div>
+
 
 
     </body>
