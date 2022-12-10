@@ -17,6 +17,10 @@
         <input type="text" id="price" name="price">
         <br />
 
+        <label for="type">Type</label>
+        <input type="text" id="type" name="type">
+        <br />
+
         <input type="submit" value="Submit">
 
     </form>
