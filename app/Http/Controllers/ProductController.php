@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 /*use Illuminate\Routing\Route;*/
 use Illuminate\Support\Facades\Route;
 use App\Models\ProductType;
+use Illuminate\Support\Facades\Redirect;
 
 class ProductController extends Controller
 {
@@ -53,14 +54,24 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'artist' => 'required|max:255',
+            'price' => 'required|numeric',
+            'producttype' => 'required|Integer',
+        ]);
+
         $product = new Product;
 
-        $product->artist = $request->artist;
-        $product->title = $request -> title;
-        $product->price = $request -> price;
+        $product->artist=$request->artist;
+        $product->title=$request->title;
+        $product->price=$request->price*100;
+        $product->product_type_id=$request->producttype;
 
-        $product ->save();
-        return redirect('/products');
+        $product->save();
+
+        return Redirect::route('index');
+
     }
 
     /**
