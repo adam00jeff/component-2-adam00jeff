@@ -21,6 +21,7 @@ class ProductController extends Controller
         $producttypes = ProductType::all()->sortBy('type');
 
         if(Route::currentRouteName()=="home") $products=Product::limit(5)->get();
+        elseif(Route::currentRouteName()=="product-added") $products=Product::limit(5)->get();
         else $products = Product::all()->sortBy('artist');
         return view('products',['products'=>$products,
             'producttypes'=>$producttypes]);
@@ -43,16 +44,12 @@ class ProductController extends Controller
     {
         $producttypes = ProductType::all()->sortBy('type');
         return view('product-form', ['producttypes'=>$producttypes]);
-
     }
-
-
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -72,7 +69,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return Redirect::route('index');
+        return Redirect::route('product-added');
 
     }
 

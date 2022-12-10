@@ -1,6 +1,4 @@
 <x-app-layout>
-
-
     <div class="productlist p-2">
         @if ($errors->any())
             <div class="bg-red-600 border-solid rounded-md border-2 border-red-700">
@@ -11,7 +9,6 @@
                 </ul>
             </div>
         @endif
-
         <form method="POST" action="/products">
             @csrf
             <div class="p-2 m-2 rounded-lg shadow-lg bg-gray-50 border-2 border-blue-900 max-w-md">
@@ -21,10 +18,8 @@
                         @foreach($producttypes as $producttype)
                             <option value="{{$producttype['id']}}">{{$producttype['type']}}</option>
                         @endforeach
-
                     </select>
                 </div>
-
                 <div class="font-bold text-sm mb-2">
                     <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
                            id="title" name="title" type="text" placeholder="title">
@@ -44,7 +39,4 @@
             </div>
         </form>
     </div>
-
-
-
 </x-app-layout>

@@ -17,10 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });*/
 Route::get('/', [\App\Http\Controllers\ProductController::class, 'index'])->name('home');
+Route::get('/products', [\App\Http\Controllers\ProductController::class,'index'])->name('index');
+Route::get('/product-added', [\App\Http\Controllers\ProductController::class,'index'])->name('product-added');
 
 Route::get('products/create', [\App\Http\Controllers\ProductController::class,'create'])->name('create');
-
-Route::get('/products', [\App\Http\Controllers\ProductController::class,'index'])->name('index');
 
 Route::get('/products/{product}',[\App\Http\Controllers\ProductController::class,'show'])->name('show');
 
