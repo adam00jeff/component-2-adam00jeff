@@ -41,7 +41,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('product-form');
+        $producttypes = ProductType::all()->sortBy('type');
+        return view('product-form', ['producttypes'=>$producttypes]);
+
     }
 
 
