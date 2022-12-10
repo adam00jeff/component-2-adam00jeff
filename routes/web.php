@@ -18,13 +18,15 @@ Route::get('/', function () {
 });*/
 Route::get('/', [\App\Http\Controllers\ProductController::class, 'index'])->name('home');
 
-Route::get('products/create', [\App\Http\Controllers\ProductController::class,'create']);
+Route::get('products/create', [\App\Http\Controllers\ProductController::class,'create'])->name('create');
 
 Route::get('/products', [\App\Http\Controllers\ProductController::class,'index'])->name('index');
 
 Route::get('/products/{product}',[\App\Http\Controllers\ProductController::class,'show'])->name('show');
 
-Route::post('/products',[\App\Http\Controllers\ProductController::class,'store']);
+Route::post('/products',[\App\Http\Controllers\ProductController::class,'store'])->name('store');
+
+Route::get('/search', [\App\Http\Controllers\ProductController::class, 'search'])->name('search');
 
 
 Route::get('/dashboard', function () {

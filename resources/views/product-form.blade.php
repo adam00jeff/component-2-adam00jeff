@@ -1,7 +1,6 @@
-@extends('layouts.app')
+<x-app-layout>
 
-@section('content')
-<hr />
+
     <h2> Add new CD product</h2>
     <form action="/products" method="post">
         @csrf
@@ -11,14 +10,15 @@
         <br />
 
         <label for="title">Title</label>
-        <input type="title" id="title" name="title">
+        <input type="text" id="title" name="title">
         <br />
 
         <label for="price">Price</label>
-        <input type="price" id="price" name="price">
+        <input type="text" id="price" name="price">
         <br />
 
         <input type="submit" value="Submit">
 
     </form>
-@endsection
+
+</x-app-layout>

@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 /*use Illuminate\Routing\Route;*/
 use Illuminate\Support\Facades\Route;
+use App\Models\ProductType;
 
 class ProductController extends Controller
 {
@@ -16,10 +17,21 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $producttypes = ProductType::all()->sortBy('type');
+
         if(Route::currentRouteName()=="home") $products=Product::limit(5)->get();
         else $products = Product::all()->sortBy('artist');
-        return view('products', ['products'=>$products]);
+        return view('products',['products'=>$products,
+            'producttypes'=>$producttypes]);
+
     }
+    public function search(Request $request)
+    {
+        if($request->producttype==0) $products = Product::all()->sortBy('artist');
+        else $products = ProductType::find($request->producttype)->product;
+        return view('products-filter',['products'=>$products]);
+    }
+
 
     /**
      * Show the form for creating a new resource.
