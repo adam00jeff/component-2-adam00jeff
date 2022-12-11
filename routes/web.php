@@ -20,7 +20,7 @@ Route::get('/', [\App\Http\Controllers\ProductController::class, 'index'])->name
 Route::get('/products', [\App\Http\Controllers\ProductController::class,'index'])->name('index');
 Route::get('/product-added', [\App\Http\Controllers\ProductController::class,'index'])->name('product-added');
 
-Route::get('products/create', [\App\Http\Controllers\ProductController::class,'create'])->name('create');
+Route::get('/products/create', [\App\Http\Controllers\ProductController::class, 'create'])->middleware('auth','checkrole:admin')->name('create');
 
 Route::get('/products/{product}',[\App\Http\Controllers\ProductController::class,'show'])->name('show');
 

@@ -72,7 +72,7 @@
            {{$header ?? ''}}
             </div>
             <!-- Page Content -->
-            <main class="border-bottom-double border-2">
+            <main class=" border-bottom-double border-2">
             {{$slot ?? ''}}
 
 

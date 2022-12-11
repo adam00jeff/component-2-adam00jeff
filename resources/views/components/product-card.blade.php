@@ -2,7 +2,7 @@
 @if(Route::currentRouteName()=='index')
     <div class="p-2 bg-blue-100">
 @else
-    <div class="p-8 max-w-xl bg-green-100">
+    <div class=" p-8 max-w-xl bg-green-100">
 @endif
 <!-- Card colour, per item type -->
 @if($product->productType['id']==1)
@@ -20,9 +20,14 @@
                 <p class = "text-gray-700">£{{$product['price']/100}}</p>
                 @if(Route::currentRouteName()=='index')
                     <button value="{{$product['id']}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full select-product">Select</button>
-                @else
-                    <button value="{{$product['id']}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full select-product">Edit</button>
-                @endif
+                @elseif(Route::currentRouteName()=='show')
+                        @can('purchase-product')
+                            <button value="{{$product['id']}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full select-product">Select</button>
+                        @endcan
+                        @can('edit-product')
+                            <button value="{{$product['id']}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full update-product">Edit</button>
+                        @endcan
+                    @endif
             </div>
         <!-- ifs to avoid errors of unclosed divs being reported -->
 @if($product->productType['id']==1)
