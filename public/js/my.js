@@ -26,6 +26,10 @@ window.onload = function() {
 function  getProductByID(id) {
     window.location= "/products/"+id;
 }
+function  updateProductByID(id) {
+    window.location= "/products/"+id+"/edit";
+}
+
 
 async function  filterByProductType(id) {
 

@@ -28,27 +28,14 @@ Route::post('/products',[\App\Http\Controllers\ProductController::class,'store']
 
 Route::get('/search', [\App\Http\Controllers\ProductController::class, 'search'])->name('search');
 
+Route::get('/products/{product}/edit', [\App\Http\Controllers\ProductController::class, 'edit'])->name('edit');
+
+Route::put('/products/{product}', [\App\Http\Controllers\ProductController::class, 'update'])->name('update');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
-
-//Route::get('product/{id}', function ($id) {
-//    $product = getProduct($id);
-//    return view('product', ['product'=>$product]);
-//});
-
-//function getProduct($id){
-//    if($id==1) return array("id"=>1,"name"=>"The Jam","price"=>5.99);
-//    if($id==2) return array("id"=>2,"name"=>"Amy Winehouse","price"=>0.99);
-//}
-
-//function getProducts() {
-//    $products = [];
-//    $products[] = array("id"=>1,"name"=>"The Jam","price"=>5.99);
-//    $products[] = array("id"=>2,"name"=>"Amy Winehouse","price"=>0.99);
-//    return $products;
-//}
 

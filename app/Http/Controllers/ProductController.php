@@ -89,11 +89,13 @@ class ProductController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function edit(Product $product)
     {
-        //
+        $producttypes = ProductType::all()->sortBy('type');
+        return view('products-edit',['product'=>$product, 'producttypes'=>$producttypes]);
+
     }
 
     /**
@@ -101,11 +103,27 @@ class ProductController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'artist' => 'required|max:255',
+            'price' => 'required|numeric',
+            'producttype' => 'required|Integer',
+        ]);
+
+
+        $product->artist=$request->artist;
+        $product->title=$request->title;
+        $product->price=$request->price*100;
+        $product->product_type_id=$request->producttype;
+
+        $product->save();
+
+        return Redirect::route('index');
+
     }
 
     /**

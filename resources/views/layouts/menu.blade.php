@@ -9,10 +9,11 @@
             Products
         </a>
     </div>
-
+    @can('edit-product')
     <div class = "m-5 shadow-2xl rounded-sm bg-yellow-300 border-blue-300">
         <a href="{{route('create')}}" class="text-gray-700 p-5 font-semibold">
             Add Product
         </a>
     </div>
+    @endcan
 </nav>
