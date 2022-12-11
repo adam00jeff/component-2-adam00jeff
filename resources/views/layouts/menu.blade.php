@@ -15,5 +15,6 @@
             Add Product
         </a>
     </div>
+
     @endcan
 </nav>

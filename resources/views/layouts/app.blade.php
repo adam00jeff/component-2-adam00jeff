@@ -72,7 +72,7 @@
            {{$header ?? ''}}
             </div>
             <!-- Page Content -->
-            <main class="justify-center mx-auto border-bottom-double border-2">
+            <main class="justify-center mx-auto border-bottom-double border-2 self-center">
             {{$slot ?? ''}}
 
 

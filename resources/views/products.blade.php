@@ -1,5 +1,6 @@
 <x-app-layout>
     @if(Route::currentRouteName()=='index')
+{{--        <x-slot name="header">--}}
         <h2 class ="font-semibold text-xl text-gray-800 leading-tight">
                 <label for="producttype" class="m-4">Product Type:</label>
                 <select id="producttype" name="producttype" class="select-box">
@@ -9,9 +10,10 @@
                     @endforeach
                 </select>
         </h2>
+{{--        </x-slot>--}}
     @elseif(Route::currentRouteName()=='home')
         <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight max-w-xl">
             Sample Products
         </h2>
         </x-slot>
