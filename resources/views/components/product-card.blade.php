@@ -1,8 +1,8 @@
 <!--Background card colour -->
 @if(Route::currentRouteName()=='index')
-    <div class="p-2 bg-blue-100">
+    <div class="container mx-auto p-2 bg-blue-100">
 @else
-    <div class=" p-8 max-w-xl bg-green-100">
+    <div class="container mx-auto p-8 max-w-xl bg-green-100">
 @endif
 <!-- Card colour, per item type -->
 @if($product->productType['id']==1)
