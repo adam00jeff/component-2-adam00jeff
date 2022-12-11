@@ -1,5 +1,6 @@
 <x-app-layout>
     <div class="productlist p-2">
+        <!-- if to catch errors and report to user -->
         @if ($errors->any())
             <div class="bg-red-600 border-solid rounded-md border-2 border-red-700">
                 <ul>
@@ -9,6 +10,7 @@
                 </ul>
             </div>
         @endif
+        <!-- main form for new product -->
         <form method="POST" action="/products">
             @csrf
             <div class="p-2 m-2 rounded-lg shadow-lg bg-gray-50 border-2 border-blue-900 max-w-md">
@@ -32,9 +34,10 @@
                     <input type="number"  step='0.01' value='0.00' class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
                            id="price" name="price" type="text" placeholder="price">
                 </p>
-
                 <div class="flex items-center justify-end mt-4 top-auto">
-                    <button type="submit" class="bg-gray-800 text-white text-xs px-2 py-2 rounded-md mb-2 mr-2 uppercase hover:underline">Add New</button>
+                    <button type="submit" class="bg-gray-800 text-white text-xs px-2 py-2 rounded-md mb-2 mr-2 uppercase hover:underline">
+                        Add New
+                    </button>
                 </div>
             </div>
         </form>

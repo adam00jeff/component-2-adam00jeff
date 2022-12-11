@@ -21,7 +21,7 @@
                 @if(Route::currentRouteName()=='index')
                     <button value="{{$product['id']}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full select-product">Select</button>
                 @else
-                    <button value="{{$product['id']}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full select-product">Buy</button>
+                    <button value="{{$product['id']}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full select-product">Edit</button>
                 @endif
             </div>
         <!-- ifs to avoid errors of unclosed divs being reported -->

@@ -14,14 +14,14 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
         $producttypes = ProductType::all()->sortBy('type');
 
         if(Route::currentRouteName()=="home") $products=Product::limit(5)->get();
-        elseif(Route::currentRouteName()=="product-added") $products=Product::limit(5)->get();
+        elseif(Route::currentRouteName()=="product-added") $products=Product::limit(1)->latest('created_at')->get();
         else $products = Product::all()->sortBy('artist');
         return view('products',['products'=>$products,
             'producttypes'=>$producttypes]);
@@ -38,7 +38,7 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
@@ -77,7 +77,7 @@ class ProductController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function show(Product $product)
     {
