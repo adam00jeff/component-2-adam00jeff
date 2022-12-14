@@ -27,7 +27,7 @@
                     <h2 class = "font-bold text-lg self-center"> Component 2</h2>
 
                 </div>
-                <div>
+                <div class="p-4">
                     @auth
                         <div class="hidden border-2 p-1.5 sm:flex sm:items-center sm:ml-6 m-5">
                             <x-dropdown align="right" width="48">

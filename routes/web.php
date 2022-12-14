@@ -36,13 +36,13 @@ Route::get('/search', [\App\Http\Controllers\ProductController::class, 'search']
 //     $product = Product::where('artist','LIKE','%'.$q.'%')->orWhere('title','LIKE','%'.$q.'%')->get();
 //     if(count($product) > 0)
 //         return view('product-search')->withDetails($product)->withQuery ( $q );
-//     else 
+//     else
 //     return view ('product-search')->withMessage('No Details found. Try to search again !');
 // });
 
 
 
-Route::get('/products/{product}/edit', [\App\Http\Controllers\ProductController::class, 'edit'])->name('edit');
+Route::get('/products/{product}/edit', [\App\Http\Controllers\ProductController::class, 'edit'])->middleware('auth','checkrole:admin')->name('edit');
 
 Route::put('/products/{product}', [\App\Http\Controllers\ProductController::class, 'update'])->name('update');
 
