@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="productlist p-2">
+    <div class="flex flex-col justify-center items-center productlist p-2">
         <!-- if to catch errors and report to user -->
         @if ($errors->any())
             <div class="bg-red-600 border-solid rounded-md border-2 border-red-700">
@@ -11,7 +11,7 @@
             </div>
         @endif
         <!-- main form for new product -->
-        <form method="POST" action="/products">
+        <form method="POST" action="/products" class="">
             @csrf
             <div class="p-2 m-2 rounded-lg shadow-lg bg-gray-50 border-2 border-blue-900 max-w-md">
                 <div class = "p-2 m-2">

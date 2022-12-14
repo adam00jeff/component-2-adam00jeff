@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="productlist p-2">
+    <div class=" flex flex-col justify-center items-center productlist p-2">
         @if ($errors->any())
             <div class="bg-red-600 border-solid rounded-md border-2 border-red-700">
                 <ul>

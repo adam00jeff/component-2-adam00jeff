@@ -65,14 +65,15 @@
                     @endif
                 </div>
 
-
             </header>
            @include('layouts.menu')
-           <div class="flex justify-center font-bold text-lg self-center"
+
+           <page-header class="flex justify-center font-bold text-lg self-center p-3">
+
            {{$header ?? ''}}
-            </div>
+           </page-header>
             <!-- Page Content -->
-            <main class="justify-center mx-auto border-bottom-double border-2 self-center">
+            <main class="justify-center mx-auto border-bottom-double border-2 self-center p-3">
             {{$slot ?? ''}}
 
 
@@ -80,6 +81,6 @@
             </main>
 
 
-
+</div>
     </body>
 </html>
