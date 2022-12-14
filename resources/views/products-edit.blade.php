@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class=" flex flex-col justify-center items-center productlist p-2">
+    <div id="productlist" class=" flex flex-col justify-center items-center p-2">
         @if ($errors->any())
             <div class="bg-red-600 border-solid rounded-md border-2 border-red-700">
                 <ul>
@@ -41,8 +41,13 @@
                 </p>
 
                 <div class="flex items-center justify-end mt-4 top-auto">
-                    <button type="submit" class="bg-gray-800 text-white text-xs px-2 py-2 rounded-md mb-2 mr-2 uppercase hover:underline">Update</button>
+
+                    <div class="flex items-center justify-between mt-4 top-auto">
+                        <button value="{{$product['id']}}" type="button" class="bg-gray-800 text-white text-xs px-2 py-2 rounded-md mb-2 mr-2 uppercase hover:underline delete-product">Remove</button>
+
+                        <button type="submit" class="bg-gray-800 text-white text-xs px-2 py-2 rounded-md mb-2 mr-2 uppercase hover:underline">Update</button>
                 </div>
+            </div>
             </div>
         </form>
 

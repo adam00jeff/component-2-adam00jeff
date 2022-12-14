@@ -36,6 +36,7 @@ Route::get('/products/{product}/edit', [\App\Http\Controllers\ProductController:
 
 Route::put('/products/{product}', [\App\Http\Controllers\ProductController::class, 'update'])->name('update');
 
+Route::delete('/products/{product}', [\App\Http\Controllers\ProductController::class, 'destroy'])->middleware('auth','checkrole:admin')->name('destroy');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

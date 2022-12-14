@@ -1,8 +1,8 @@
 <!--Background card colour -->
 @if(Route::currentRouteName()=='index')
-    <div class="container mx-auto p-2 bg-blue-100">
+    <div id="productlist" class="container mx-auto p-2 bg-blue-100">
 @else
-    <div class="container mx-auto p-8 max-w-xl bg-green-100">
+    <div id="productlist" class="container mx-auto p-8 max-w-xl bg-green-100">
 @endif
 <!-- Card colour, per item type -->
 @if($product->productType['id']==1)
@@ -26,7 +26,9 @@
                             <button value="{{$product['id']}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full select-product">Select</button>
                         @endcan
                         @can('edit-product')
+
                             <button value="{{$product['id']}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full update-product">Edit</button>
+
                         @endcan
                     @endif
             </div>

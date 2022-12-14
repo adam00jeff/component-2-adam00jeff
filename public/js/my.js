@@ -5,10 +5,10 @@ window.onload = function() {
     document.addEventListener('change', e => {
         if (e.target.matches('select.select-box')) {
             filterByProductType(e.target.value);
-        }        
+        }
     });
 
-    
+
     document.addEventListener('click', e => {
         if (e.target.matches('button.select-product')) {
             getProductByID(e.target.value);
@@ -45,11 +45,23 @@ else{
         filter.innerHTML = response.data;
         var pagination = document.getElementById("pagination");
         pagination.innerHTML = "<br><br>";
-        
+
     }
     catch (error) {
         console.error(error);
     }
 }
 }
+async function deleteProductByID(id) {
+    try{
+        const response = await axios.delete('/products/'+id);
+        if(response.data.msg==='success') {
+            alert('Successfully Deleted');
+            window.location = '/products';
+        }
 
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
