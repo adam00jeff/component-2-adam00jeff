@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });*/
+
 Route::get('/', [\App\Http\Controllers\ProductController::class, 'index'])->name('home');
 Route::get('/products', [\App\Http\Controllers\ProductController::class,'index'])->name('index');
 Route::get('/product-added', [\App\Http\Controllers\ProductController::class,'index'])->name('product-added');
@@ -27,6 +28,7 @@ Route::get('/products/{product}',[\App\Http\Controllers\ProductController::class
 Route::post('/products',[\App\Http\Controllers\ProductController::class,'store'])->name('store');
 
 Route::get('/search', [\App\Http\Controllers\ProductController::class, 'search'])->name('search');
+Route::get('/search', [\App\Http\Controllers\ProductController::class, 'search'])->name('txt-search');
 
 Route::get('/products/{product}/edit', [\App\Http\Controllers\ProductController::class, 'edit'])->name('edit');
 

@@ -29,7 +29,7 @@ class ProductController extends Controller
     }
     public function search(Request $request)
     {
-        if($request->producttype==0) $products = Product::all()->sortBy('artist');
+        if(Route::currentRouteName()=="search" && $request->producttype==0) $products = Product::all()->sortBy('artist');
         else $products = ProductType::find($request->producttype)->product;
         return view('products-filter',['products'=>$products]);
     }
