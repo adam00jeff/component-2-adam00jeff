@@ -34,7 +34,8 @@ function  updateProductByID(id) {
 
 
 async function  filterByProductType(id) {
-
+if(id==0) window.location ="/products/"
+else{
     try{
         const response = await axios.get('/filter',
             {params: {producttype:id}}
@@ -49,5 +50,6 @@ async function  filterByProductType(id) {
     catch (error) {
         console.error(error);
     }
+}
 }
 
