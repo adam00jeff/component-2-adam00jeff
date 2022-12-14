@@ -5,8 +5,10 @@ window.onload = function() {
     document.addEventListener('change', e => {
         if (e.target.matches('select.select-box')) {
             filterByProductType(e.target.value);
-        }
+        }        
     });
+
+    
     document.addEventListener('click', e => {
         if (e.target.matches('button.select-product')) {
             getProductByID(e.target.value);
@@ -34,13 +36,15 @@ function  updateProductByID(id) {
 async function  filterByProductType(id) {
 
     try{
-        const response = await axios.get('/search',
+        const response = await axios.get('/filter',
             {params: {producttype:id}}
         );
 
         var filter = document.getElementById("productlist");
         filter.innerHTML = response.data;
-
+        var pagination = document.getElementById("pagination");
+        pagination.innerHTML = "<br><br>";
+        
     }
     catch (error) {
         console.error(error);

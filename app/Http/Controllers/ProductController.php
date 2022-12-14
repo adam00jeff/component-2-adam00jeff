@@ -22,16 +22,21 @@ class ProductController extends Controller
 
         if(Route::currentRouteName()=="home") $products=Product::limit(5)->get();
         elseif(Route::currentRouteName()=="product-added") $products=Product::limit(1)->latest('created_at')->get();
-        else $products = Product::all()->sortBy('artist');
+        else $products = Product::paginate(15);
         return view('products',['products'=>$products,
             'producttypes'=>$producttypes]);
 
     }
-    public function search(Request $request)
+    public function filter(Request $request)
     {
-        if(Route::currentRouteName()=="search" && $request->producttype==0) $products = Product::all()->sortBy('artist');
+        if(Route::currentRouteName()=="filter" && $request->producttype==0) $products = Product::all()->sortBy('artist');
         else $products = ProductType::find($request->producttype)->product;
         return view('products-filter',['products'=>$products]);
+    }
+
+    public function search(Request $request)
+    {
+    //
     }
 
 

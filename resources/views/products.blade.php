@@ -24,15 +24,23 @@
         </h2>
         </x-slot>
     @endif
-    <div id="productlist" class=
-        @if(Route::currentRouteName()=='product-added')"block p-2 m-2 rounded-lg shadow-lg bg-gray-50 border-2 border-blue-900 max-w-xl"
-        @else"p-2 grid grid-cols-5"
-        @endif    >
+
+    @if(Route::currentRouteName()=='product-added') 
+    <div id="productlist" class= "block p-2 m-2 rounded-lg shadow-lg bg-gray-50 border-2 border-blue-900 max-w-xl">
+        @else 
+        <div id="productlist" class= "p-2 grid grid-cols-5">
+        @endif    
         @foreach($products as $product)
             <x-product-card :product="$product"/>
         @endforeach
     </div>
+    @if(Route::currentRouteName()=='index') 
+    <div id="pagination">
+    {{ $products->links() }}
+    <div>
+    @endif
 </x-app-layout>
+
 
 
 

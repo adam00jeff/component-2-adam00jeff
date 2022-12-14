@@ -1,6 +1,7 @@
 <?php
-
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +28,19 @@ Route::get('/products/{product}',[\App\Http\Controllers\ProductController::class
 
 Route::post('/products',[\App\Http\Controllers\ProductController::class,'store'])->name('store');
 
+Route::get('/filter', [\App\Http\Controllers\ProductController::class, 'filter'])->name('filter');
 Route::get('/search', [\App\Http\Controllers\ProductController::class, 'search'])->name('search');
-Route::get('/search', [\App\Http\Controllers\ProductController::class, 'search'])->name('txt-search');
+
+// Route::any('/search',function(){
+//     $q = Request::input ( 'q' );
+//     $product = Product::where('artist','LIKE','%'.$q.'%')->orWhere('title','LIKE','%'.$q.'%')->get();
+//     if(count($product) > 0)
+//         return view('product-search')->withDetails($product)->withQuery ( $q );
+//     else 
+//     return view ('product-search')->withMessage('No Details found. Try to search again !');
+// });
+
+
 
 Route::get('/products/{product}/edit', [\App\Http\Controllers\ProductController::class, 'edit'])->name('edit');
 
