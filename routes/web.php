@@ -29,18 +29,8 @@ Route::get('/products/{product}',[\App\Http\Controllers\ProductController::class
 Route::post('/products',[\App\Http\Controllers\ProductController::class,'store'])->name('store');
 
 Route::get('/filter', [\App\Http\Controllers\ProductController::class, 'filter'])->name('filter');
+
 Route::get('/search', [\App\Http\Controllers\ProductController::class, 'search'])->name('search');
-
-// Route::any('/search',function(){
-//     $q = Request::input ( 'q' );
-//     $product = Product::where('artist','LIKE','%'.$q.'%')->orWhere('title','LIKE','%'.$q.'%')->get();
-//     if(count($product) > 0)
-//         return view('product-search')->withDetails($product)->withQuery ( $q );
-//     else
-//     return view ('product-search')->withMessage('No Details found. Try to search again !');
-// });
-
-
 
 Route::get('/products/{product}/edit', [\App\Http\Controllers\ProductController::class, 'edit'])->middleware('auth','checkrole:admin')->name('edit');
 
@@ -52,4 +42,14 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+// Route::any('/search',function(){
+//     $q = Request::input ( 'q' );
+//     $product = Product::where('artist','LIKE','%'.$q.'%')->orWhere('title','LIKE','%'.$q.'%')->get();
+//     if(count($product) > 0)
+//         return view('product-search')->withDetails($product)->withQuery ( $q );
+//     else
+//     return view ('product-search')->withMessage('No Details found. Try to search again !');
+// });
+
 

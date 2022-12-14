@@ -25,14 +25,19 @@
                     </select>
                 </div>
 
-                <div class="font-bold text-sm mb-2">
+                <div class="flex-row font-bold text-sm mb-2">
+                    <label for="title">Title:</label>
                     <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="title" name="title" type="text" value="{{$product['title']}}">
                 </div>
-                <p class="text-gray-700 text-sm">
+                <p class="font-bold text-sm mb-2">
+                    <label for="artist">Artist:</label>
                     <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="artist" name="artist" type="text" value="{{$product['artist']}}">
                 </p>
-                <p class="text-gray-500 text-base mt-2">
-                    <input type="number"  step='0.01' id="price" name="price" value="{{$product['price']/100}}">
+                <p class="font-bold text-sm mb-2">
+                    <label for="price">Price:</label>
+                    <input type="number"  step='0.01' id="price" name="price" value="{{$product['price']/100}}"
+                           class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
+                    >
                 </p>
 
                 <div class="flex items-center justify-end mt-4 top-auto">

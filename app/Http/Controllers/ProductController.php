@@ -71,6 +71,10 @@ class ProductController extends Controller
         $product->title=$request->title;
         $product->price=$request->price*100;
         $product->product_type_id=$request->producttype;
+        if($request->file('file')!=null){
+            $imagename = $request->file('file')->store('public/images');
+            $product->imagename = str_replace("public/images/", "", $imagename);
+        }
 
         $product->save();
 
