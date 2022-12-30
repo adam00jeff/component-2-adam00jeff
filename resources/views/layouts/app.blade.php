@@ -23,7 +23,7 @@
             <!-- Page Heading -->
             <header class="flex justify-between border-bottom-double border-8 bg-white shadow">
                 <div class="flex flex-col items-start border-2 rounded-lg m-5">
-                    <img src="{{asset('images/om.jpg')}}" alt="logo" class="m-5">
+                    <a href="{{route('home')}}"><img src="{{asset('images/om.jpg')}}" alt="logo" class="m-5"></a>
                     <h2 class = "font-bold text-lg self-center"> Component 2</h2>
 
                 </div>
