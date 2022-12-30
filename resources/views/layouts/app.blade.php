@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -82,7 +83,13 @@
         {{$header ?? ''}}
     </page-header>
     <!-- Page Content -->
+
     <main class="justify-center mx-auto border-bottom-double border-2 self-center p-3">
+        @if(session('success'))
+            <div class="flex justify-center font-bold text-lg self-center p-3 alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         {{$slot ?? ''}}
 
 

@@ -18,13 +18,15 @@
         <img src="{{asset('storage/images/'.$product->imagename)}}" alt="product"   class = "m-5 w-20 max-w-xs">
             <h3 class="text-yellow text-sm py-2 px-2">{{$product->productType['type']}}</h3>
             <div class = "flex justify-between">
-                <p class = "text-gray-700">£{{$product['price']/100}}</p>
-                @if(Route::currentRouteName()=='index')
+            {{--    <p class = "text-gray-700">£{{$product['price']/100}}</p>--}}
+                @if(Route::currentRouteName()=='index'||Route::currentRouteName()=='search')
                     <button value="{{$product['id']}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full select-product">Select</button>
                 @elseif(Route::currentRouteName()=='show')
                         @can('purchase-product')
-                            <button value="{{$product['id']}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full select-product">Select</button>
-                        @endcan
+                        <p><strong>Price: </strong> {{ $product->price }}$</p>
+                        <p class="btn-holder bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"><a href="{{ route('add.to.cart', $product->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
+
+                    @endcan
                         @can('edit-product')
 
                             <button value="{{$product['id']}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full update-product">Edit</button>

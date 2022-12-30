@@ -19,12 +19,23 @@ window.onload = function() {
         if (e.target.matches('button.delete-product')) {
             deleteProductByID(e.target.value);
         }
+        if (e.target.matches('button.buy-product')) {
+            buyProductByID(e.target.value);
+        }
+        if (e.target.matches('button.clearcart')) {
+            clearcart(e.target.value);
+        }
         /*if (e.target.matches('button.add-product')) {
             addNewProduct();
         }*/
     });
 }
-
+function  clearcart(id) {
+    window.location= "/products/"+id;
+}
+function  buyProductByID(id) {
+    window.location= "/products/"+id;
+}
 function  getProductByID(id) {
     window.location= "/products/"+id;
 }
