@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use http\QueryString;
 use Illuminate\Http\Request;
 /*use Illuminate\Routing\Route;*/
 use Illuminate\Support\Facades\Route;
@@ -36,7 +37,19 @@ class ProductController extends Controller
 
     public function search(Request $request)
     {
-    //
+
+    //get the search value from the request
+        $producttypes = ProductType::all()->sortBy('type');
+        $search = $request->input('search');
+
+        //search in the products table for matches
+        $products = Product::query() ->where('artist', 'LIKE', "%".$search."%")
+            ->orWhere('title', 'LIKE', "%".$search."%")
+            ->orWhere('price', 'LIKE', "%".$search."%")
+            ->get();
+
+        return view('products',['products'=>$products,
+            'producttypes'=>$producttypes]);
     }
 
 

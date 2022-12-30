@@ -23,18 +23,30 @@
             Product Added
         </h2>
         </x-slot>
+    @elseif(Route::currentRouteName()=='search')
+        @if($products->isNotEmpty())
+        <x-slot name="header">
+            <h2 class="justify-center font-semibold text-xl text-gray-800 leading-tight max-w-xl">
+                Search Results
+            </h2>
+        </x-slot>
+        @else
+            <div>
+                <h2>No Posts Found</h2>
+            </div>
+            @endif
     @endif
 
-    @if(Route::currentRouteName()=='product-added') 
+    @if(Route::currentRouteName()=='product-added')
     <div id="productlist" class= "block p-2 m-2 rounded-lg shadow-lg bg-gray-50 border-2 border-blue-900 max-w-xl">
-        @else 
+        @else
         <div id="productlist" class= "p-2 grid grid-cols-5">
-        @endif    
+        @endif
         @foreach($products as $product)
             <x-product-card :product="$product"/>
         @endforeach
     </div>
-    @if(Route::currentRouteName()=='index') 
+    @if(Route::currentRouteName()=='index')
     <div id="pagination">
     {{ $products->links() }}
     <div>
