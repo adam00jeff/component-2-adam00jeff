@@ -31,8 +31,9 @@
             </h2>
         </x-slot>
         @else
-            <div>
-                <h2>No Posts Found</h2>
+            <div class="flex justify-center">
+                <h2 class="justify-center font-semibold text-xl text-gray-800 leading-tight max-w-xl">
+                    Sorry No Matching Products Found</h2>
             </div>
             @endif
     @endif
