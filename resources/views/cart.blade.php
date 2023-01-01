@@ -25,12 +25,12 @@
                                 </div>
                             </div>
                         </td>
-                        <td data-th="Price">${{ $details['price'] }}</td>
+                        <td data-th="Price">${{ number_format($details['price']/100,2, '.', '.') }}</td>
                         <td data-th="Quantity">
 
                             <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-cart" />
                         </td>
-                        <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
+                        <td data-th="Subtotal" class="text-center">${{ number_format($details['price'] * $details['quantity']/100,2, '.', '.') }}</td>
                         <td class="actions" data-th="">
 
                             <button value="{{ $details['quantity'] }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full update-cart">Edit</button>
@@ -42,7 +42,7 @@
             </tbody>
             <tfoot>
             <tr>
-                <td colspan="5" class="text-right"><h3><strong>Total ${{ $total }}</strong></h3></td>
+                <td colspan="5" class="text-right"><h3><strong>Total ${{  number_format($total/100,2, '.', '.') }}</strong></h3></td>
             </tr>
             <tr>
                 <td colspan="5" class="text-right">

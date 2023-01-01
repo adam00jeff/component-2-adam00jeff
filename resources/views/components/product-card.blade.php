@@ -13,17 +13,20 @@
     <div class ="bg-yellow-200 p-1 rounded-lg shadow-lg">
 @endif
         <!-- product card -->
-            <h3 class = "text-blue-700 mb-4 text-lg font-bold">{{$product['artist']}}</h3>
-            <h3 class = "font-bold mb-2 text-gray-800">{{ $product['title'] }}</h3>
+            <h3 class = "text-blue-700 mb-4 text-lg font-bold">Artist: {{$product['artist']}}</h3>
+            <h3 class = "font-bold mb-2 text-gray-800">Title: {{ $product['title'] }}</h3>
         <img src="{{asset('storage/images/'.$product->imagename)}}" alt="product"   class = "m-5 w-20 max-w-xs">
-            <h3 class="text-yellow text-sm py-2 px-2">{{$product->productType['type']}}</h3>
+            <h3 class=""><strong>Product Type:</strong> {{$product->productType['type']}}</h3>
+            <p><strong>Price: </strong>$ {{ number_format($product->price/100,2, '.', '.') }}</p>
             <div class = "flex justify-between">
             {{--    <p class = "text-gray-700">£{{$product['price']/100}}</p>--}}
                 @if(Route::currentRouteName()=='index'||Route::currentRouteName()=='search')
                     <button value="{{$product['id']}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full select-product">Select</button>
+
                 @elseif(Route::currentRouteName()=='show')
-                        @can('purchase-product')
-                        <p><strong>Price: </strong> {{ $product->price }}$</p>
+
+                    @can('purchase-product')
+
                         <p class="btn-holder bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"><a href="{{ route('add.to.cart', $product->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
 
                     @endcan
