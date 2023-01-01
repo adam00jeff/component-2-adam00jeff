@@ -52,46 +52,17 @@ class ProductController extends Controller
                 "imagename" => $product->imagename
             ];
         }
-/*        $product->artist=$request->artist;
-        $product->title=$request->title;
-        $product->price=$request->price*100;
-        $product->product_type_id=$request->producttype;
-        if($request->file('file')!=null){
-            $imagename = $request->file('file')->store('public/images');
-            $product->imagename = str_replace("public/images/", "", $imagename);*/
 
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
-    public function updateCart(Request $request)
-    {
-        if($request->id && $request->quantity){
-            $cart = session()->get('cart');
-            $cart[$request->id]["quantity"] = $request->quantity;
-            session()->put('cart', $cart);
-            session()->flash('success', 'Cart updated successfully');
-        }
-    }
+
 
     /**
      * Write code on Method
      *
      * @return response()
      */
-    public function removeCart(Request $request)
-    {
-        if($request->id) {
-            $cart = session()->get('cart');
-            if(isset($cart[$request->id])) {
-                unset($cart[$request->id]);
-                session()->put('cart', $cart);
-            }
-            session()->flash('success', 'Product removed successfully');
-        }
-    }
-
-
-
     public function filter(Request $request)
     {
         if(Route::currentRouteName()=="filter" && $request->producttype==0) $products = Product::all()->sortBy('artist');

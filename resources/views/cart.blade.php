@@ -27,13 +27,11 @@
                         </td>
                         <td data-th="Price">${{ number_format($details['price']/100,2, '.', '.') }}</td>
                         <td data-th="Quantity">
-
-                            <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-cart" />
+                            <input type="number" value="{{ $details['quantity'] }}" id="quantitybox" name="quantitybox" class="quantity-box" />
                         </td>
                         <td data-th="Subtotal" class="text-center">${{ number_format($details['price'] * $details['quantity']/100,2, '.', '.') }}</td>
                         <td class="actions" data-th="">
-
-                            <button value="{{ $details['quantity'] }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full update-cart">Edit</button>
+                            <button value="{{ $details['quantity'] }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full update-cart">Update</button>
 
                         </td>
                     </tr>
@@ -46,15 +44,12 @@
             </tr>
             <tr>
                 <td colspan="5" class="text-right">
-                    <a href="{{ url('/') }}" class="btn btn-warning bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+                    <a href="{{ url('/') }}" class="btn btn-warning bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"></i> Continue Shopping</a>
                     <button  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full clear-cart">Clear Cart</button>
-
                     <button class="btn btn-success bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Checkout</button>
                 </td>
             </tr>
             </tfoot>
         </table>
 
-
-        </script>
 </x-app-layout>
