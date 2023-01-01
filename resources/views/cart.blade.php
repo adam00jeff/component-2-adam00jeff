@@ -1,5 +1,5 @@
 <x-app-layout>
-
+    @if(session('cart'))
         <table id="cart" class="table table-hover table-condensed">
             <thead>
             <tr>
@@ -12,7 +12,7 @@
             </thead>
             <tbody>
             @php $total = 0 @endphp
-            @if(session('cart'))
+
                 @foreach(session('cart') as $id => $details)
 {{--         <?php ddd(session('cart')); ?>--}}
                     @php $total += $details['price'] * $details['quantity'] @endphp
@@ -37,7 +37,7 @@
                         </td>
                     </tr>
                 @endforeach
-            @endif
+
             </tbody>
             <tfoot>
             <tr>
@@ -52,5 +52,9 @@
             </tr>
             </tfoot>
         </table>
-
+    @else
+        <div class="flex justify-center font-bold text-lg self-center p-3">
+            <p>Your Cart is Empty</p>
+        </div>
+    @endif
 </x-app-layout>

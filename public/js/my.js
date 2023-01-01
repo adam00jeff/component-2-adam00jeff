@@ -15,6 +15,9 @@ window.onload = function() {
         if (e.target.matches('button.delete-product')) {
             deleteProductByID(e.target.value);
         }
+        if (e.target.matches('button.delete-user')) {
+            deleteUserByID(e.target.value);
+        }
         if (e.target.matches('button.buy-product')) {
             buyProductByID(e.target.value);
         }
@@ -61,6 +64,19 @@ async function deleteProductByID(id) {
         if(response.data.msg==='success') {
             alert('Successfully Deleted');
             window.location = '/products';
+        }
+
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
+async function deleteUserByID(id) {
+    try{
+        const response = await axios.delete('/users/'+id);
+        if(response.data.msg==='success') {
+            alert('Successfully Deleted');
+            window.location = '/users';
         }
 
     }

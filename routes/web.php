@@ -28,6 +28,7 @@ Route::get('/products', [\App\Http\Controllers\ProductController::class,'index']
 Route::get('/product-added', [\App\Http\Controllers\ProductController::class,'index'])->name('product-added');
 
 Route::get('/products/create', [\App\Http\Controllers\ProductController::class, 'create'])->middleware('auth','checkrole:admin')->name('create');
+Route::get('/products/users', [\App\Http\Controllers\ProductController::class, 'users'])->middleware('auth','checkrole:admin')->name('users');
 
 Route::get('/products/{product}',[\App\Http\Controllers\ProductController::class,'show'])->name('show');
 
@@ -42,6 +43,9 @@ Route::get('/products/{product}/edit', [\App\Http\Controllers\ProductController:
 Route::put('/products/{product}', [\App\Http\Controllers\ProductController::class, 'update'])->name('update');
 
 Route::delete('/products/{product}', [\App\Http\Controllers\ProductController::class, 'destroy'])->middleware('auth','checkrole:admin')->name('destroy');
+Route::delete('/users/{user}', [\App\Http\Controllers\ProductController::class, 'destroyuser'])->middleware('auth','checkrole:admin')->name('destroyuser');
+Route::get('/users',[\App\Http\Controllers\ProductController::class,'users'])->middleware('auth','checkrole:admin')->name('users');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
