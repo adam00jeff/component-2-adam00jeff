@@ -32,6 +32,23 @@ class ProductController extends Controller
     {
         return view('cart');
     }
+public function clearitem(Request $request)
+{
+    if($request->id) {
+        $cart = session()->get('cart');
+        if (isset($cart[$request->id])) {
+            unset($cart[$request->id]);
+            session()->put('cart', $cart);
+        }
+        return redirect()->back()->with('success', 'Product removed successfully');
+    }
+ }
+public function clearcart()
+{
+
+session()->forget('cart');
+    return redirect()->back()->with('success', 'Your Cart was emptied successfully!');
+}
 
 
     public function addToCart($id)

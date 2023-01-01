@@ -14,8 +14,9 @@
             @php $total = 0 @endphp
             @if(session('cart'))
                 @foreach(session('cart') as $id => $details)
-{{--            <?php ddd(session('cart')); ?>--}}
+{{--         <?php ddd(session('cart')); ?>--}}
                     @php $total += $details['price'] * $details['quantity'] @endphp
+                    @php $prodid = $details['id']; @endphp
                     <tr data-id="{{ $id }}">
                         <td data-th="Product">
                             <div class="row">
@@ -31,8 +32,8 @@
                         </td>
                         <td data-th="Subtotal" class="text-center">${{ number_format($details['price'] * $details['quantity']/100,2, '.', '.') }}</td>
                         <td class="actions" data-th="">
-                            <button value="{{ $details['quantity'] }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full update-cart">Update</button>
-
+                            {{--{{ route('add.to.cart', $product->id) }}"--}}
+                            <a href="{{ route('clear.item', $details['id'])}}" class="btn btn-warning btn-block text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full " role="button">Remove Item</a>
                         </td>
                     </tr>
                 @endforeach
@@ -45,7 +46,7 @@
             <tr>
                 <td colspan="5" class="text-right">
                     <a href="{{ url('/') }}" class="btn btn-warning bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"></i> Continue Shopping</a>
-                    <button  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full clear-cart">Clear Cart</button>
+                    <a href="{{ route('clear.cart')}}" class="btn btn-warning btn-block text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full " role="button">Clear Cart</a>
                     <button class="btn btn-success bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Checkout</button>
                 </td>
             </tr>

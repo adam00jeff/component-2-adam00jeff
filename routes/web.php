@@ -20,8 +20,8 @@ Route::get('/', function () {
 
 Route::get('cart', [\App\Http\Controllers\ProductController::class, 'cart'])->name('cart');
 Route::get('add-to-cart/{id}', [\App\Http\Controllers\ProductController::class, 'addToCart'])->name('add.to.cart');
-
-
+Route::get('/clearcart', [\App\Http\Controllers\ProductController::class, 'clearcart'])->name('clear.cart');
+Route::get('clear-item/{id}', [\App\Http\Controllers\ProductController::class, 'clearitem'])->name('clear.item');
 
 Route::get('/', [\App\Http\Controllers\ProductController::class, 'index'])->name('home');
 Route::get('/products', [\App\Http\Controllers\ProductController::class,'index'])->name('index');
