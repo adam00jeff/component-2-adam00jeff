@@ -18,4 +18,7 @@
 
     @endforeach
     </div>
+    <div id="pagination">
+        {{ $users->links() }}
+    </div>
 </x-app-layout>

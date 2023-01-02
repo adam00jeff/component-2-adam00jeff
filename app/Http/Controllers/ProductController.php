@@ -32,7 +32,7 @@ class ProductController extends Controller
     }
     public function users()
     {
-        $users = User::all();
+        $users = User::paginate(20);
         return view('user-form', ['users' => $users]);
     }
     public function cart()

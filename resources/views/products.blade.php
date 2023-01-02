@@ -50,7 +50,7 @@
     @if(Route::currentRouteName()=='index')
     <div id="pagination">
     {{ $products->links() }}
-    <div>
+    </div>
     @endif
 </x-app-layout>
 
