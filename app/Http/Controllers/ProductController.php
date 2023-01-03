@@ -83,6 +83,8 @@ class ProductController extends Controller
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
 
+
+
     public function filter(Request $request)
     {
         if (Route::currentRouteName() == "filter" && $request->producttype == 0) $products = Product::all()->sortBy('artist');

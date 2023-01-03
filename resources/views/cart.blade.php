@@ -1,12 +1,13 @@
 <x-app-layout>
     @if(session('cart'))
-        <table id="cart" class="p-2 m-3 table table-hover table-condensed">
+        <div class="grid justify-items-center">
+        <table id="cart" class="table table-hover table-condensed table-auto">
             <thead>
             <tr class="bg-yellow-300 border-2">
-                <th style="width:50%">Product</th>
-                <th style="width:10%">Price</th>
-                <th style="width:8%">Quantity</th>
-                <th style="width:22%" class="text-center">Subtotal</th>
+                <th style="width:40%">Product</th>
+                <th style="width:8%"class="text-center">Price</th>
+                <th style="width:8%"class="text-center">Quantity</th>
+                <th style="width:20%" class="text-center">Subtotal</th>
                 <th style="width:10%"></th>
             </tr>
             </thead>
@@ -26,14 +27,14 @@
                                 </div>
                             </div>
                         </td>
-                        <td data-th="Price">£{{ number_format($details['price']/100,2, '.', '.') }}</td>
-                        <td data-th="Quantity">
-                            <input type="number" value="{{ $details['quantity'] }}" id="quantitybox" name="quantitybox" class="quantity-box" />
+                        <td data-th="Price" class="text-center" >£{{ number_format($details['price']/100,2, '.', '.') }}</td>
+                        <td data-th="Quantity" class="text-center">{{ $details['quantity'] }}
+ {{--                           <input type="number" value="" id="quantitybox" name="quantitybox" class="quantity-box" />--}}
                         </td>
                         <td data-th="Subtotal" class="text-center">£{{ number_format($details['price'] * $details['quantity']/100,2, '.', '.') }}</td>
                         <td class="actions" data-th="">
                             {{--{{ route('add.to.cart', $product->id) }}"--}}
-                            <a href="{{ route('clear.item', $details['id'])}}" class="btn btn-warning btn-block text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full " role="button">Remove Item</a>
+                            <a href="{{ route('clear.item', $details['id'])}}" class="btn btn-warning btn-block text-center bg-blue-500 hover:bg-red-500 text-white font-bold  px-4 rounded-full " role="button">Remove Items</a>
                         </td>
                     </tr>
                 @endforeach
@@ -46,12 +47,13 @@
             <tr>
                 <td colspan="5" class="text-right">
                     <a href="{{ url('/') }}" class="btn btn-warning bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"></i> Continue Shopping</a>
-                    <a href="{{ route('clear.cart')}}" class="btn btn-warning btn-block text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full " role="button">Clear Cart</a>
+                    <a href="{{ route('clear.cart')}}" class="btn btn-warning btn-block text-center bg-blue-500 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-full " role="button">Clear Cart</a>
                     <button class="btn btn-success bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Checkout</button>
                 </td>
             </tr>
             </tfoot>
         </table>
+        </div>
     @else
         <div class="flex justify-center font-bold text-lg self-center p-3">
             <p>Your Cart is Empty</p>

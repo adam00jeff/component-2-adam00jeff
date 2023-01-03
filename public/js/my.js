@@ -1,10 +1,10 @@
 window.onload = function() {
+
     document.addEventListener('change', e => {
         if (e.target.matches('select.select-box')) {
             filterByProductType(e.target.value);
         }
     });
-
     document.addEventListener('click', e => {
         if (e.target.matches('button.select-product')) {
             getProductByID(e.target.value);
@@ -58,6 +58,8 @@ else{
     }
 }
 }
+
+
 async function deleteProductByID(id) {
     try{
         const response = await axios.delete('/products/'+id);
