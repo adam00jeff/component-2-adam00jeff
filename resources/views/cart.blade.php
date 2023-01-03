@@ -1,8 +1,8 @@
 <x-app-layout>
     @if(session('cart'))
-        <table id="cart" class="table table-hover table-condensed">
+        <table id="cart" class="p-2 m-3 table table-hover table-condensed">
             <thead>
-            <tr>
+            <tr class="bg-yellow-300 border-2">
                 <th style="width:50%">Product</th>
                 <th style="width:10%">Price</th>
                 <th style="width:8%">Quantity</th>
@@ -26,11 +26,11 @@
                                 </div>
                             </div>
                         </td>
-                        <td data-th="Price">${{ number_format($details['price']/100,2, '.', '.') }}</td>
+                        <td data-th="Price">£{{ number_format($details['price']/100,2, '.', '.') }}</td>
                         <td data-th="Quantity">
                             <input type="number" value="{{ $details['quantity'] }}" id="quantitybox" name="quantitybox" class="quantity-box" />
                         </td>
-                        <td data-th="Subtotal" class="text-center">${{ number_format($details['price'] * $details['quantity']/100,2, '.', '.') }}</td>
+                        <td data-th="Subtotal" class="text-center">£{{ number_format($details['price'] * $details['quantity']/100,2, '.', '.') }}</td>
                         <td class="actions" data-th="">
                             {{--{{ route('add.to.cart', $product->id) }}"--}}
                             <a href="{{ route('clear.item', $details['id'])}}" class="btn btn-warning btn-block text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full " role="button">Remove Item</a>
@@ -41,7 +41,7 @@
             </tbody>
             <tfoot>
             <tr>
-                <td colspan="5" class="text-right"><h3><strong>Total ${{  number_format($total/100,2, '.', '.') }}</strong></h3></td>
+                <td colspan="5" class="text-right"><h3><strong>Total £{{  number_format($total/100,2, '.', '.') }}</strong></h3></td>
             </tr>
             <tr>
                 <td colspan="5" class="text-right">

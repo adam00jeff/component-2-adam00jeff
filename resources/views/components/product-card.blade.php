@@ -17,7 +17,7 @@
             <h3 class = "font-bold mb-2 text-gray-800">Title: {{ $product['title'] }}</h3>
         <img src="{{asset('storage/images/'.$product->imagename)}}" alt="product"   class = "m-5 w-20 max-w-xs">
             <h3 class=""><strong>Product Type:</strong> {{$product->productType['type']}}</h3>
-            <p><strong>Price: </strong>$ {{ number_format($product->price/100,2, '.', '.') }}</p>
+            <p><strong>Price: </strong>£ {{ number_format($product->price/100,2, '.', '.') }}</p>
             <div class = "flex justify-between">
             {{--    <p class = "text-gray-700">£{{$product['price']/100}}</p>--}}
                 @if(Route::currentRouteName()=='index'||Route::currentRouteName()=='search'||Route::currentRouteName()=='filter')
