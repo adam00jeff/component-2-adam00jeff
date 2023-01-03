@@ -31,8 +31,7 @@
         </div>
         <!--    login/logout dropdown & register/login link-->
         <div class="p-4">
-            <!-- checks for a logged-in user
-            shows login/register if not-->
+            <!-- checks for a logged-in user shows login/register if not-->
             @auth
                 <div class="hidden border-2  sm:flex sm:items-center sm:ml-6 m-5">
                     <x-dropdown align="right" width="48">
@@ -59,7 +58,8 @@
 
                                 <x-dropdown-link :href="route('logout')"
                                                  onclick="event.preventDefault();
-                                                this.closest('form').submit();"  class="text-medium font-extrabold hover:bg-yellow-300">
+                                                this.closest('form').submit();"
+                                                 class="text-medium font-extrabold hover:bg-yellow-300">
                                     {{ __('Log Out') }}
                                 </x-dropdown-link>
                             </form>
@@ -68,23 +68,25 @@
                 </div>
             @else
                 <!-- shown when no user is logged in-->
-                <a href="{{ route('login') }}" class="flex-rows rounded-xl m-1 shadow-2xl rounded-sm bg-yellow-300 border-blue-300 p-3 font-semibold text-gray-600 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">Login</a>
+                <a href="{{ route('login') }}"
+                   class="flex-rows rounded-xl m-1 shadow-2xl rounded-sm bg-yellow-300 border-blue-300 p-3 font-semibold text-gray-600 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">Login</a>
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="flex-rows rounded-xl m-1 shadow-2xl rounded-sm bg-yellow-300 border-blue-300 p-3 font-semibold text-gray-600 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">Register</a>
+                    <a href="{{ route('register') }}"
+                       class="flex-rows rounded-xl m-1 shadow-2xl rounded-sm bg-yellow-300 border-blue-300 p-3 font-semibold text-gray-600 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">Register</a>
                 @endif
             @endif
         </div>
 
     </header>
+    <!-- includes the menu bar -->
     @include('layouts.menu')
-
+    <!-- sub-page header, if required-->
     <page-header class="flex justify-center font-bold text-lg self-center p-3">
-
         {{$header ?? ''}}
     </page-header>
     <!-- Page Content -->
-
     <main class="justify-center mx-auto border-bottom-double border-2 self-center p-3">
+        <!-- Reports back Session info when required at top of section-->
         @if(session('success'))
             <div class="flex justify-center font-bold text-lg self-center p-3 alert alert-success">
                 {{ session('success') }}

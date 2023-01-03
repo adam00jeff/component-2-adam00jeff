@@ -1,3 +1,5 @@
+<!--Main Navigation Menu -->
+<!--Home Button -->
 <nav class="flex justify-center">
     <div class="flex rounded-xl m-5 shadow-2xl rounded-sm bg-yellow-300 border-blue-300">
         <a href="{{route('home')}}"
@@ -5,14 +7,14 @@
             Home
         </a>
     </div>
-
+    <!--Products Button -->
     <div class="flex rounded-xl m-5 shadow-2xl rounded-sm bg-yellow-300 border-blue-300">
         <a href="{{route('index')}}"
            class="p-5 font-semibold text-gray-600 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
             Products
         </a>
     </div>
-
+    <!--Add Product Button, protected by is-admin -->
     @can('edit-product')
         <div class="flex rounded-xl m-5 shadow-2xl rounded-sm bg-yellow-300 border-blue-300">
             <a href="{{route('create')}}"
@@ -21,6 +23,7 @@
             </a>
         </div>
     @endcan
+    <!--Edit Users Button, protected by is-admin -->
     @can('edit-users')
         <div class="flex rounded-xl m-5 shadow-2xl rounded-sm bg-yellow-300 border-blue-300">
             <a href="{{route('users')}}"
@@ -29,7 +32,7 @@
             </a>
         </div>
     @endcan
-
+    <!--Search Bar -->
     <div class="flex rounded-xl m-5 shadow-2xl rounded-sm bg-yellow-300 border-blue-300">
         <form action="{{ route('search') }}" method="GET">
             <input type="text" name="search" required
@@ -39,36 +42,31 @@
                 Search
             </button>
         </form>
-
     </div>
+    <!-- Shopping Cart Dropdown, protected by logged-in user, checks for cart session being set -->
     @if(session('cart'))
-    @auth
-        <div class="flex rounded-xl m-5 shadow-2xl rounded-sm bg-yellow-300 border-blue-300">
-            <x-dropdown align="right" width="48">
-                <x-slot name="trigger">
-                    <button
-
-                        class="flex text-xl items-center shadow-2xl p-3 font-semibold text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                        Cart Items: <span
-                            class="badge badge-pill badge-danger p-1">{{ count((array) session('cart')) }}</span>
-
-                        <div class="ml-1">
-                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                 viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                      clip-rule="evenodd"/>
-                            </svg>
-                        </div>
-                    </button>
-                </x-slot>
-
+        @auth
+            <!--Displays the main dropdown -->
+            <div class="flex rounded-xl m-5 shadow-2xl rounded-sm bg-yellow-300 border-blue-300">
+                <x-dropdown align="right" width="48">
+                    <x-slot name="trigger">
+                        <button class="flex text-xl items-center shadow-2xl p-3 font-semibold text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                            Cart Items: <span class="badge badge-pill badge-danger p-1">{{ count((array) session('cart')) }}</span>
+                            <div class="ml-1">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                     viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                          clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                        </button>
+                    </x-slot>
+                    <!--The content within the dropdown -->
                     <x-slot name="content">
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
-
                             <x-dropdown-link>
                                 <div class="dropdown-menu">
                                     <div class="row total-header-section">
@@ -107,9 +105,8 @@
                             </x-dropdown-link>
                         </form>
                     </x-slot>
-            </x-dropdown>
-        </div>
+                </x-dropdown>
+            </div>
+        @endif
     @endif
-    @endif
-
 </nav>
