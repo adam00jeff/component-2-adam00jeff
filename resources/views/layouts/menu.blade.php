@@ -75,8 +75,8 @@
                                                 class="badge badge-pill badge-danger">Your Cart</span>
                                         </div>
                                         @php $total = 0 @endphp
-                                        @foreach((array) session('cart') as $id => $details)
-                                            @php $total += $details['price'] * $details['quantity'] @endphp
+                                        @foreach((array) session('cart') as $id => $product)
+                                            @php $total += $product['price'] * $product['quantity'] @endphp
                                         @endforeach
                                         <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
                                             <p>Total: <span
@@ -85,13 +85,13 @@
                                         </div>
                                     </div>
                                     @if(session('cart'))
-                                        @foreach(session('cart') as $id => $details)
+                                        @foreach(session('cart') as $id => $product)
                                             <div class="row cart-detail">
                                                 <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
-                                                    <p>{{ $details['title'] }}</p>
+                                                    <p>{{ $product['title'] }}</p>
                                                     <span
-                                                        class="price text-info"> £{{ number_format($details['price']/100,2, '.', '.') }}</span>
-                                                    <span class="count"> Quantity:{{ $details['quantity'] }}</span>
+                                                        class="price text-info"> £{{ number_format($product['price']/100,2, '.', '.') }}</span>
+                                                    <span class="count"> Quantity:{{ $product['quantity'] }}</span>
                                                 </div>
                                             </div>
                                         @endforeach
