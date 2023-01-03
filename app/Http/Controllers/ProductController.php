@@ -42,7 +42,7 @@ class ProductController extends Controller
      */
     public function users()
     {
-        $users = User::paginate(20);
+        $users = User::orderBy('name', 'asc')->paginate(20);
         return view('user-form', ['users' => $users]);
     }
 
