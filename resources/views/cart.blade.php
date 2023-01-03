@@ -17,13 +17,11 @@
                 <!--Calculations for cart values -->
                 @php $total = 0 @endphp
                 @foreach(session('cart') as $id => $product)
-                    {{--         <?php ddd(session('cart')); ?>--}}
                     @php $total += $product['price'] * $product['quantity'] @endphp
                     @php $prodid = $product['id']; @endphp
                     <tr data-id="{{ $id }}">
                         <td data-th="Product">
                             <div class="row">
-                                {{--<div class="col-sm-3 hidden-xs"><img src="{{ $product['imagename'] }}" width="100" height="100" class="img-responsive"/></div>--}}
                                 <div class="col-sm-9">
                                     <h4 class="nomargin">{{ $product['title'] }}</h4>
                                 </div>
@@ -32,19 +30,16 @@
                         <td data-th="Price" class="text-center">
                             £{{ number_format($product['price']/100,2, '.', '.') }}</td>
                         <td data-th="Quantity" class="text-center">{{ $product['quantity'] }}
-                            {{--                           <input type="number" value="" id="quantitybox" name="quantitybox" class="quantity-box" />--}}
                         </td>
                         <td data-th="Subtotal" class="text-center">
                             £{{ number_format($product['price'] * $product['quantity']/100,2, '.', '.') }}</td>
                         <td class="actions" data-th="">
-                            {{--{{ route('add.to.cart', $product->id) }}"--}}
                             <a href="{{ route('clear.item', $product['id'])}}"
                                class="btn btn-warning btn-block text-center bg-blue-500 hover:bg-red-500 text-white font-bold  px-4 rounded-full "
                                role="button">Remove Items</a>
                         </td>
                     </tr>
                 @endforeach
-
                 </tbody>
                 <tfoot>
                 <tr>
@@ -69,6 +64,7 @@
             </table>
         </div>
     @else
+        <!--Show if session(cart) is not set -->
         <div class="flex justify-center font-bold text-lg self-center p-3">
             <p>Your Cart is Empty</p>
         </div>
