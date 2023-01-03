@@ -20,7 +20,7 @@
             <p><strong>Price: </strong>$ {{ number_format($product->price/100,2, '.', '.') }}</p>
             <div class = "flex justify-between">
             {{--    <p class = "text-gray-700">£{{$product['price']/100}}</p>--}}
-                @if(Route::currentRouteName()=='index'||Route::currentRouteName()=='search')
+                @if(Route::currentRouteName()=='index'||Route::currentRouteName()=='search'||Route::currentRouteName()=='filter')
                     <button value="{{$product['id']}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full select-product">Select</button>
 
                 @elseif(Route::currentRouteName()=='show')
@@ -31,7 +31,7 @@
 
                     @endcan
                         @can('edit-product')
-
+                            <p class="btn-holder bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"><a href="{{ route('add.to.cart', $product->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
                             <button value="{{$product['id']}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full update-product">Edit</button>
 
                         @endcan
