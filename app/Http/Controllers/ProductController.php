@@ -211,6 +211,7 @@ class ProductController extends Controller
         $producttypes = ProductType::all()->sortBy('type');
         return view('products-edit', ['product' => $product, 'producttypes' => $producttypes]);
     }
+
     /**
      * Update the specified resource in storage.
      *
